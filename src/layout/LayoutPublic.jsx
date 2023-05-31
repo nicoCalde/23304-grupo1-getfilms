@@ -2,6 +2,7 @@ import { Link, AppBar, Button, Container, GlobalStyles, Grid, Toolbar, Typograph
 import React from 'react';
 import { Outlet, Link as RLink } from 'react-router-dom';
 import Copyright from '../components/Copyright';
+import { useAuth } from '../components/useAuth';
 import Logo from '../logo.png'
 const footers = [
   {
@@ -38,33 +39,20 @@ const LayoutPublic = () => {
           <Typography color="inherit" noWrap sx={{ flexGrow: 1 }}>
           <img src={Logo} alt="Logo" height={100} />  
           </Typography>
-          <nav>
-            <RLink to={'/login'}>
-              <Link
-                variant="button"
-                color="text.primary"
-                sx={{ my: 1, mx: 1.5 }}
-              >
+            <nav>
+            <RLink to={'/plans'}>
+              </RLink>
+              <RLink to={'/plans'}>
+                Planes
+              </RLink>
+            </nav>
+            <RLink to={'/signup'}>
+            <Button variant="outlined" sx={{ my: 1, mx: 1.5 }}>
                 Registro
-              </Link>
+              </Button>
             </RLink>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Empresa
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Soporte
-            </Link>
-          </nav>
+          
+          
           <RLink to={'/login'}>
             <Button variant="outlined" sx={{ my: 1, mx: 1.5 }}>
               Iniciar Sesion

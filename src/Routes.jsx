@@ -9,6 +9,10 @@ import Home from './pages/public/Home';
 import Login from './pages/public/Login';
 import ErrorPage from './pages/ErrorPage';
 import SignUp from './pages/public/SignUp';
+import Pricing from './pages/public/Pricing';
+import LayoutPrivate from './layout/LayoutPrivate';
+import UserHome from './pages/private/UserHome';
+
 
 const router = createBrowserRouter([
     {
@@ -16,7 +20,16 @@ const router = createBrowserRouter([
         element: <LayoutPublic />,
         errorElement: <ErrorPage />,
         children: [
-            { index: true, element: <Home /> },
+            { index: true, element: <Home /> },{ path:'/plans', element:<Pricing/>}
+        ],
+    },
+    {
+        path: "/app",
+        element: <LayoutPrivate />,
+        errorElement: <ErrorPage />,
+        children: [
+            { index: true, element: <UserHome /> },
+            { path: '/app/pepe', element: <Home /> }
         ],
     },
     {
