@@ -46,8 +46,7 @@ function Header() {
     <div ref={headerRef} className="header">
       <div className="header__wrap container">
         <div className="logo">
-          <img src={logo} alt="" />
-          <Link to="/">get-films</Link>
+          <Link to="/"><img src={logo} alt="" /></Link>
         </div>
         <ul className="header__nav">
           {
