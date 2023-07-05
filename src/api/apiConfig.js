@@ -1,6 +1,6 @@
 const apiConfig = {
     baseUrl: 'https://api.themoviedb.org/3/',
-    apiKey: '',
+    apiKey: 'fbebdd596d401e603cc86711d8c4b3e8',
     originalImage: (imgPath) => `https://image.tmdb.org/t/p/original/${imgPath}`,
     w500Image: (imgPath) => `https://image.tmdb.org/t/p/w500/${imgPath}`,
 }
