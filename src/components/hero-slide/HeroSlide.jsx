@@ -34,7 +34,7 @@ function HeroSlide() {
 
     return (
         <div className='hero-slide'>
-            <Swiper modules={[Autoplay]} grabCursor={true} spaceBetween={0} slidesPerView={1} autoplay={{delay: 4000}}>
+            <Swiper modules={[Autoplay]} grabCursor={true} spaceBetween={0} slidesPerView={1} autoplay={{delay: 7000}}>
                 {
                     moviItems.map((item, i) => (
                         <SwiperSlide key={i}>
