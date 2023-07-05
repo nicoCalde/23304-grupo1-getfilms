@@ -12,14 +12,14 @@ const headerNav = [
     path: '/'
   },
   {
-    display: 'Peliculas',
+    display: 'Películas',
     path: '/movie'
   },
   {
     display: 'Series',
     path: '/tv'
   }
-];
+]
 
 function Header() {
 
