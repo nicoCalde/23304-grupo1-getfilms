@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 import './movie-grid.scss';
 
 import MovieCard from '../movie-card/MovieCard';
-import { OutlineButton } from '../button/Button';
+import Button, { OutlineButton } from '../button/Button';
+import Input from '../input/Input';
 
 import tmdbApi, { category, movieType, tvType } from '../../api/tmdbApi';
 
@@ -67,6 +68,9 @@ const MovieGrid = props => {
 
     return (
         <>
+            <div className="section mb-3">
+                <MovieSearch category={props.category} keyword={keyword}/>
+            </div>
             <div className='movie-grid'>
                 {
                     items.map((item, i) => <MovieCard category={props.category} item={item} key={i}/>)
@@ -81,6 +85,43 @@ const MovieGrid = props => {
             }
         </>
     );
+}
+
+const MovieSearch = props => {
+
+    const history = useHistory();
+
+    const [Keyword, setKeyword] = useState(props.Keyword ? props.Keyword : '');
+
+    const goToSearch = useCallback(
+        () => {
+            if (Keyword.trim().length > 0) {
+                history.push(`${category[props.category]}/search/${Keyword}`);
+            }
+        },
+        [Keyword, props.category, history]
+    );
+
+    useEffect(() => {
+      const enterEvent = (e) => {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+            goToSearch();
+        }
+      }
+      document.addEventListener('keyup', enterEvent);
+      return () => {
+        document.removeEventListener('keyup', enterEvent);
+      }
+    }, [Keyword, goToSearch])
+    
+
+    return (
+        <div className="movie-search">
+            <Input type='text' placeholder='Ingresar palabra clave' value={Keyword} onChange={(e) => setKeyword(e.target.value)}/>
+            <Button className="small" onClick={goToSearch}>Buscar</Button>
+        </div>
+    )
 }
 
 export default MovieGrid;
