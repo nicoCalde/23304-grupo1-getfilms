@@ -6,7 +6,6 @@ import './movie-list.scss';
 import { SwiperSlide, Swiper } from 'swiper/react';
 
 import tmdbApi, { category } from '../../api/tmdbApi';
-import apiConfig from '../../api/apiConfig';
 
 import MovieCard from '../movie-card/MovieCard';
 
@@ -19,7 +18,7 @@ const MovieList = props => {
       let response = null;
       const params = {};
 
-      if(props.typw !== 'similar') {
+      if(props.type !== 'similar') {
         switch(props.category) {
           case category.movie:
             response = await tmdbApi.getMovieList(props.type, {params});
@@ -28,12 +27,12 @@ const MovieList = props => {
             response = await tmdbApi.getTvList(props.type, {params});
         }
       } else {
-        response = await tmdbApi.similar(props.category, props.id)
+        response = await tmdbApi.similar(props.category, props.id);
       }
       setItems(response.results);
     }
     getList();
-  }, [])
+  }, [props.category, props.id, props.type]);
 
   return (
     <div className='movie-list'>
